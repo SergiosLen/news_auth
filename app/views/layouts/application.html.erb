@@ -2,6 +2,13 @@
 <html>
   <head>
     <title>Newstand</title>
+    <div class="heading">
+<!--     <ul>
+    <% if current_user %>
+    <li><%= link_to 'New Article', new_article_path %></li>
+    </ul>
+    <% end %>
+ -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,700,100,400' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -16,6 +23,18 @@
         <% end %>
 
         <div class="nav">
+        <% if current_user %>
+        <ul>
+        <li><%= current_user.email %></li>
+        <li><%= link_to 'New Article', new_article_path %></li>
+        <li><%= link_to 'Log out', logout_path, method: 'delete' %></li>
+        </ul>
+        <% else %>
+        <ul>
+        <li><%= link_to 'Login', 'login' %></a></li>
+        <li><%= link_to 'Signup', 'signup' %></a></li>
+        </ul>
+        <% end %>
           
           <!-- Your code here -->
 
